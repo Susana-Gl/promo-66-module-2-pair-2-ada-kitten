@@ -12,28 +12,42 @@ const breed = document.querySelector (".js_search_breed")
 
 //DATOS
 
+const kittenImage1 = 'https://api-pw.dev.adalab.es/gato-siames.webp';
+const kittenName1  = "Anastacio";
 const kittenDesc1 = "Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente."
 const kittenBreed1 = "Siamés"
 
+const kittenImage2 = 'https://api-pw.dev.adalab.es/sphynx-gato.webp';
+const kittenName2 = "Fiona";
 const kittenDesc2 = "Produce fascinación y curiosidad. Exótico, raro, bello, extraño… hasta con pinta de alienígena han llegado a definir a esta raza gatuna que se caracteriza por la «ausencia» de pelo."
 const kittenBreed2 = "Sphynx"
 
+const kittenImage3 = 'https://api-pw.dev.adalab.es/maine-coon-cat.webp';
+const kittenName3 = "Cielo";
 const kittenDesc3 = "Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad. Sus ojos son grandes y las orejas resultan largas y en punta."
 const kittenBreed3 = "Maine Coon"
 
-let breedText ="";
+
 
 
 //FUNCIONES
+
+function showNewCatForm() {
+  newForm.classList.remove("collapsed");
+}
+
+function hideNewCatForm() {
+  newForm.classList.add("collapsed");
+}
 
 //FUNCIONES EVENTOS
 
 //EVENTOS
 
-btnMas.addEventListener("click", () => {
+/*btnMas.addEventListener("click", () => {
   newForm.classList.toggle("collapsed");
 })
-
+*/
 searchBtn.addEventListener("click", (ev) => {
   ev.preventDefault();
   const descrSearchText = searchDesc.value
@@ -44,68 +58,54 @@ searchBtn.addEventListener("click", (ev) => {
     kittenList.innerHTML += kittenTwo;}
   if (kittenDesc3.includes(descrSearchText)) {
     kittenList.innerHTML += kittenThree;}
-
-    const searchBreed = breed.value
-  kittenList.innerHTML =""
-  if (kittenBreed1.includes(searchBreed)) {
-    kittenList.innerHTML += kittenOne;}
-  if (kittenBreed2.includes(searchBreed)) {
-    kittenList.innerHTML += kittenTwo;}
-  if (kittenBreed3.includes(searchBreed)) {
-    kittenList.innerHTML += kittenThree;}
-
-  if (kittenBreed1 === "") {
-    breedText = `Uy que despiste, no sabemos su raza`;
-  } else {
-    breedText = kittenBreed1
-  }
-
-  if (kittenBreed2 === "") {
-    breedText = `Uy que despiste, no sabemos su raza`;
-  } else {
-    breedText = kittenBreed2
-  }
-
-  if (kittenBreed3 === "") {
-    card_race.innerHTML = `Uy que despiste, no sabemos su raza`
-    /* breedText = `Uy que despiste, no sabemos su raza`; */
-  } else {
-    breedText = kittenBreed3
-  }
 })
 
 
 
 //ACCIONES AL CARGAR LA PAGINA
 
+let breedText ="";
+
+if( kittenBreed1 === "" ) {
+  breedText = "¡Ups! Se nos olvidó el nombre de la raza.";
+}
+else {
+  breedText = kittenBreed1;
+}
+
 const kittenOne = `<li class="card">
 <article>
   <img
     class="card_img"
-    src="https://api-pw.dev.adalab.es/gato-siames.webp"
+    src="${kittenImage1}"
     alt="gatito"
   />
-  <h3 class="card_title">Anastacio</h3>
-  <h4 class="card_race">Siamés</h4>
+  <h3 class="card_title">${kittenName1}</h3>
+  <h4 class="card_race">${ kittenBreed1 || "Uy que despiste, no sabemos su raza" }</h4>
   <p class="card_description">
-            Porte elegante, su patrón de color tan característico y sus ojos
-            de un azul intenso, pero su historia se remonta a Asía al menos
-            hace 500 años, donde tuvo su origen muy posiblemente.
+            ${kittenDesc1}
    </p>
 </article>
 </li>`;
+
+if( kittenBreed2 === "" ) {
+  breedText = "¡Ups! Se nos olvidó el nombre de la raza.";
+}
+else {
+  breedText = kittenBreed2;
+}
 
 const kittenTwo = `<li class="card">
 <article>
   <img
     class="card_img"
-    src="https://api-pw.dev.adalab.es/sphynx-gato.webp"
+    src="${kittenImage2}"
     alt="gatito"
   />
-  <h3 class="card_title">Fiona</h3>
-  <h4 class="card_race">Sphynx</h4>
+  <h3 class="card_title">${kittenName2}</h3>
+  <h4 class="card_race">${kittenBreed2 || "Uy que despiste, no sabemos su raza"}</h4>
   <p class="card_description">
-            Produce fascinación y curiosidad. Exótico, raro, bello, extraño… hasta con pinta de alienígena han llegado a definir a esta raza gatuna que se caracteriza por la «ausencia» de pelo.
+            ${kittenDesc2}
    </p>
 </article>
 </li>`;
@@ -114,13 +114,13 @@ const kittenThree = `<li class="card">
 <article>
   <img
     class="card_img"
-    src="https://api-pw.dev.adalab.es/maine-coon-cat.webp"
+    src="${kittenImage3}"
     alt="gatito"
   />
-  <h3 class="card_title">Cielo</h3>
-  <h4 class="card_race">Maine Coon</h4>
+  <h3 class="card_title">${kittenName3}</h3>
+  <h4 class="card_race">${kittenBreed3 || "Uy que despiste, no sabemos su raza"}</h4>
   <p class="card_description">
-          Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad. Sus ojos son grandes y las orejas resultan largas y en punta.
+          ${kittenDesc3}
    </p>
 </article>
 </li>`;
